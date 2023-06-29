@@ -1,0 +1,11 @@
+/streamOpenAI
+docs/persist_dir/
+docs/easyjet_conditions.pdf
+docs/Booking.com_ Terms and Conditions..html
+docs/ryanair_conditions.pdf
+docs/Terms of Service - Airbnb Help Center.html
+docs/wizzair_conditions.pdf
+nb/__pycache__
+nb/credentials.py
+scripts/credentials.py
+webinar_demo/credentials.py
