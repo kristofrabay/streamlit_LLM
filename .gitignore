@@ -9,3 +9,4 @@ nb/__pycache__
 nb/credentials.py
 scripts/credentials.py
 webinar_demo/credentials.py
+streamlit_chat/credentials.py
