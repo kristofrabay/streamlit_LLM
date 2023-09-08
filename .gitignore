@@ -1,12 +1,21 @@
 /streamOpenAI
-docs/persist_dir/
-docs/easyjet_conditions.pdf
-docs/Booking.com_ Terms and Conditions..html
-docs/ryanair_conditions.pdf
-docs/Terms of Service - Airbnb Help Center.html
-docs/wizzair_conditions.pdf
-nb/__pycache__
-nb/credentials.py
-scripts/credentials.py
-webinar_demo/credentials.py
-streamlit_chat/credentials.py
+/streamlitLLM
+
+_exploration/docs/persist_dir/
+_exploration/docs/easyjet_conditions.pdf
+_exploration/docs/Booking.com_ Terms and Conditions..html
+_exploration/docs/ryanair_conditions.pdf
+_exploration/docs/Terms of Service - Airbnb Help Center.html
+_exploration/docs/wizzair_conditions.pdf
+_exploration/nb/__pycache__
+
+_exploration/nb/credentials.py
+_exploration/scripts/credentials.py
+_exploration/webinar_demo/credentials.py
+_exploration/streamlit_chat/credentials.py
+
+AAI_speech_to_text/credentials.py
+OAI_chat_documents/credentials.py
+OAI_chat_simple/credentials.py
+
+*.pyc
