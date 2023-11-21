@@ -120,7 +120,7 @@ import sys
 dir = path.Path(__file__).abspath()
 sys.path.append(dir.parent.parent)
 
-with open('FULL_TEXT.txt',  encoding='utf-8') as f:
+with open('./FULL_TEXT.txt',  encoding='utf-8') as f:
     full_text = f.read()
 
 
