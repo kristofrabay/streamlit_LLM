@@ -1,0 +1,6 @@
+docx2txt==0.8
+langchain==0.0.281
+numpy==1.25.2
+openai==0.28.0
+streamlit==1.26.0
+tiktoken==0.4.0
