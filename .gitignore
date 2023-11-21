@@ -8,6 +8,12 @@ _exploration/docs/ryanair_conditions.pdf
 _exploration/docs/Terms of Service - Airbnb Help Center.html
 _exploration/docs/wizzair_conditions.pdf
 
+BM_demo/Anonimiz lt akta/
+BM_demo/Anonimizált akta - docx/
+BM_demo/secrets.toml
+BM_demo/utils.py
+BM_demo/nb_exploration.ipynb
+
 */__pycache__
 *credentials.py
 *.pyc
