@@ -1,5 +1,10 @@
 # packages
 import streamlit as st
+from audio_recorder_streamlit import audio_recorder
+
+from gtts import gTTS
+from io import BytesIO
+
 import numpy as np
 from copy import deepcopy
 
@@ -77,6 +82,14 @@ def retrieve_relevant_chunks(user_input, db, model):
     sources = "\n".join(results)
 
     return sources
+
+def TTS(text):
+
+    sound_file = BytesIO()
+    tts = gTTS(text, lang='en')
+    tts.write_to_fp(sound_file)
+
+    return sound_file
 
 #### TEMPORARY DUPLICATIONS
 # documents are out of scope for now, simply chat with ChatGPT
@@ -212,6 +225,7 @@ with col2:
         for key in st.session_state.keys():
             del st.session_state[key]
 
+
 #### end of clear cache
 
 if False:#len(DOCUMENTS_TO_CHOOSE_FROM) == 0:
@@ -296,3 +310,19 @@ else:
             #        st.text(sources)
 
 
+        col3, col4 = st.columns([2, 1])
+
+        with col3:
+            st.write("Play AI's message")
+            if full_response:
+                sound_file = TTS(full_response)
+                st.audio(sound_file, format="audio/wav")
+            else:
+                sound_file = TTS('Hello')
+                st.audio(sound_file, format="audio/wav")
+
+        with col4:
+            st.write("Record Human's message")
+            audio_bytes = audio_recorder(text = 'Click & record', pause_threshold=2.0, icon_size = "2x",)
+            #if audio_bytes:
+            #    st.audio(audio_bytes, format="audio/wav")
