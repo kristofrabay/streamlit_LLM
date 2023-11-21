@@ -118,7 +118,7 @@ import path
 import sys
 
 dir = path.Path(__file__).abspath()
-sys.append.path(dir.parent.parent)
+sys.path.append(dir.parent.parent)
 
 with open('FULL_TEXT.txt',  encoding='utf-8') as f:
     full_text = f.read()
