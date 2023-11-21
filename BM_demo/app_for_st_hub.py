@@ -114,6 +114,10 @@ def retrieve_relevant_chunks(user_input, db, model):
 
 
 ### load full text
+
+print(os.getcwd())
+print(os.listdir())
+
 import path
 import sys
 
