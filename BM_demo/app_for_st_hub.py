@@ -114,6 +114,12 @@ def retrieve_relevant_chunks(user_input, db, model):
 
 
 ### load full text
+import path
+import sys
+
+dir = path.Path(__file__).abspath()
+sys.append.path(dir.parent.parent)
+
 with open('FULL_TEXT.txt',  encoding='utf-8') as f:
     full_text = f.read()
 
