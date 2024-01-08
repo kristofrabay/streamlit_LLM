@@ -275,8 +275,9 @@ else:
 
             if len(input_tokens) <= MODEL_INPUT_TOKEN_SUMM_LIMIT[MODEL]: # maybe we can fit everything into the prompt, why not
                 print('include all documents')
-                results = [doc.metadata['source'].split("\\")[-1] + "-page-" + str(doc.metadata['page'] )+ ": " + doc.page_content.replace("\n", "").replace("\r", "") for doc in docs]
-                sources = "\n".join(results)   
+                #results = [doc.metadata['source'].split("\\")[-1] + "-page-" + str(doc.metadata['page'] )+ ": " + doc.page_content.replace("\n", "").replace("\r", "") for doc in docs]
+                #sources = "\n".join(results)  
+                sources = WHOLE_DOC 
             else:
                 sources = retrieve_relevant_chunks(QUERY, db, MODEL)
 
@@ -291,29 +292,35 @@ else:
             # to always fit in context, either limit historic messages, or count tokens
             # current solution: if we reach model-specific max msg number or token count, remove q-a pairs from beginning until conditions are met
           
-            current_token_count = len(encoding.encode(' '.join([i['content'] for i in messages])))
+            #current_token_count = len(encoding.encode(' '.join([i['content'] for i in messages])))
 
-            while (len(messages)-3 > MAX_CONTEXT_QUESTIONS[MODEL] * 2) or (current_token_count >= MODEL_INPUT_TOKEN_SUMM_LIMIT[MODEL]):
-
-                messages.pop(3)            
-                current_token_count = len(encoding.encode(' '.join([i['content'] for i in messages])))
+            #while (len(messages)-3 > MAX_CONTEXT_QUESTIONS[MODEL] * 2) or (current_token_count >= MODEL_INPUT_TOKEN_SUMM_LIMIT[MODEL]):
+            #
+            #    messages.pop(3)            
+            #    current_token_count = len(encoding.encode(' '.join([i['content'] for i in messages])))
 
             #full_response = generate_response(messages, MODEL, TEMPERATURE, MAX_TOKENS)
             #message_placeholder.markdown(full_response)
 
             # with stream
-            full_response = []
-            for chunk in generate_response_with_stream(messages, TEMPERATURE):
 
-                chunk_message = chunk['choices'][0]['delta'] 
+            try:
+                full_response = []
+                for chunk in generate_response_with_stream(messages, TEMPERATURE):
 
-                if chunk_message not in [ {'role' : 'assistant'}, {}]:
-                    full_response.append(chunk_message['content'])
-                else:
-                    continue
-                
-                full_response_print = ''.join(full_response)
-                message_placeholder.markdown(full_response_print)
+                    chunk_message = chunk['choices'][0]['delta'] 
+
+                    if chunk_message not in [ {'role' : 'assistant'}, {}]:
+                        full_response.append(chunk_message['content'])
+                    else:
+                        continue
+                    
+                    full_response_print = ''.join(full_response)
+                    message_placeholder.markdown(full_response_print)
+
+            except:
+                full_response = generate_response(messages, MODEL, TEMPERATURE, MAX_TOKENS)
+                message_placeholder.markdown(full_response)
 
         # Add user and AI message to chat history
         st.session_state.messages.append({"role": "user", "content": QUERY})
