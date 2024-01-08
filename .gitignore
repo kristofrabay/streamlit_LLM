@@ -17,3 +17,4 @@ BM_demo/nb_exploration.ipynb
 */__pycache__
 *credentials.py
 *.pyc
+EU_demo/secrets.toml
