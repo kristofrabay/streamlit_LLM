@@ -44,7 +44,7 @@ import openai
 
 from utils import load_docx, load_HTML, load_pdf, load_txt, create_db, concat_docs_count_tokens
 
-st.sidebar.image("med_logo_2.png", use_column_width=True)
+st.sidebar.image("EU_demo/med_logo_2.png", use_column_width=True)
 
 openai.api_key = openai_api
 os.environ["OPENAI_API_KEY"] = openai_api
