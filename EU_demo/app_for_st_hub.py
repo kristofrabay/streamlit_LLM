@@ -285,7 +285,7 @@ else:
             messages =[
                         {"role": "system", "content" : "You are a helpful assistant helping people answer their questions related to documents."},
                         {"role": "user", "content": system_message.format(system_prompt = SYSTEM_MESSAGE, sources=sources)},
-                        *st.session_state.messages,
+                        #*st.session_state.messages,
                         {"role": "user", "content": question_message.format(question=QUERY)}
                         ]
             
