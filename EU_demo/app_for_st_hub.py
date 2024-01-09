@@ -319,12 +319,12 @@ else:
                     message_placeholder.markdown(full_response_print)
 
             except:
-                full_response = generate_response(messages, MODEL, TEMPERATURE, MAX_TOKENS)
-                message_placeholder.markdown(full_response)
+                full_response_print = generate_response(messages, MODEL, TEMPERATURE, MAX_TOKENS)
+                message_placeholder.markdown(full_response_print)
 
         # Add user and AI message to chat history
         st.session_state.messages.append({"role": "user", "content": QUERY})
-        st.session_state.messages.append({"role": "assistant", "content": full_response})
+        st.session_state.messages.append({"role": "assistant", "content": full_response_print})
 
         #if len(st.session_state.messages) > 0:
         #
