@@ -88,12 +88,12 @@ def generate_embeddings(text):
     embeddings = response['data'][0]['embedding']
     return embeddings
 
-def generate_response(messages, MODEL, TEMPERATURE, MAX_TOKENS):
+def generate_response(messages, MODEL, TEMPERATURE): #MAX_TOKENS
     completion = openai.ChatCompletion.create(
         model=MODEL, 
         messages=messages, 
-        temperature=TEMPERATURE, 
-        max_tokens=MAX_TOKENS)
+        temperature=TEMPERATURE,) 
+        #max_tokens=MAX_TOKENS)
     return completion.choices[0]['message']['content']
 
 def generate_response_with_stream(messages, TEMPERATURE):
@@ -101,7 +101,7 @@ def generate_response_with_stream(messages, TEMPERATURE):
         model=MODEL, 
         messages=messages, 
         temperature=TEMPERATURE,
-        max_tokens=MAX_TOKENS,
+        #max_tokens=MAX_TOKENS,
         stream = True)
 
 def retrieve_relevant_chunks(user_input, db, model):
@@ -169,7 +169,7 @@ with prompt_expander:
         SYSTEM_MESSAGE = st.text_area('Alapüzenet', value = default_system_prompt, height = 400)
     with cols[1]:
         TEMPERATURE = float(st.select_slider('Kreativitás', [str(round(i, 2)) for i in np.linspace(0.0, 2, 101)], value = '0.0')) 
-        MAX_TOKENS = st.slider('Generált szöveghossz max.', min_value = 1, max_value = MODEL_INPUT_TOKEN_SUMM_LIMIT[MODEL], value = 1024)
+        #MAX_TOKENS = st.slider('Generált szöveghossz max.', min_value = 1, max_value = MODEL_INPUT_TOKEN_SUMM_LIMIT[MODEL], value = 1024)
 
 
 
@@ -274,7 +274,7 @@ else:
             message_placeholder = st.empty()
 
             if len(input_tokens) <= MODEL_INPUT_TOKEN_SUMM_LIMIT[MODEL]: # maybe we can fit everything into the prompt, why not
-                print('include all documents')
+                #print('include all documents')
                 #results = [doc.metadata['source'].split("\\")[-1] + "-page-" + str(doc.metadata['page'] )+ ": " + doc.page_content.replace("\n", "").replace("\r", "") for doc in docs]
                 #sources = "\n".join(results)  
                 sources = WHOLE_DOC 
@@ -319,7 +319,7 @@ else:
                     message_placeholder.markdown(full_response_print)
 
             except:
-                full_response_print = generate_response(messages, MODEL, TEMPERATURE, MAX_TOKENS)
+                full_response_print = generate_response(messages, MODEL, TEMPERATURE,) #MAX_TOKENS
                 message_placeholder.markdown(full_response_print)
 
         # Add user and AI message to chat history
