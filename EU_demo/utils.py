@@ -12,8 +12,8 @@ from langchain.embeddings.openai import OpenAIEmbeddings
 from langchain.vectorstores import FAISS
 
 ### Splitters for different data sources ###
-text_splitter = RecursiveCharacterTextSplitter(chunk_size = 100000, chunk_overlap = 200)
-html_splitter = RecursiveCharacterTextSplitter.from_language(language=Language.MARKDOWN, chunk_size=1500, chunk_overlap=200)
+text_splitter = RecursiveCharacterTextSplitter(chunk_size = 4500, chunk_overlap = 200)
+html_splitter = RecursiveCharacterTextSplitter.from_language(language=Language.MARKDOWN, chunk_size=4500, chunk_overlap=200)
 
 
 def add_context_to_doc_chunks(_docs):
