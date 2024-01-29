@@ -142,7 +142,7 @@ Assistant:
 
 
 # streamlit app
-st.title("MI-vezérelt orvos-asszisztens")
+st.title("MI-vezérelt egészségügyi-asszisztens")
 #st.header("Integrate Generative AI with Your Knowledge")
 st.write("A felületet készítette: Hiflylabs Zrt.")
 #st.sidebar.image("https://hiflylabs.com/_next/static/media/greenOnDark.35e68199.svg", use_column_width=True)
