@@ -138,7 +138,10 @@ def create_db(_docs):
 
 def concat_docs_count_tokens(docs, tiktoken_encoding):
 
-    WHOLE_DOC = ' '.join([i.page_content for i in docs])
+    all_docs = [doc.metadata['source'].split("\\")[-1] + "-page-" + str(doc.metadata['page'] )+ ": " + doc.page_content.replace("\n", "").replace("\r", "") for doc in docs]
+    WHOLE_DOC = "\n".join(all_docs)
+
+    #WHOLE_DOC = ' '.join([i.page_content for i in docs])
     input_tokens = tiktoken_encoding.encode(WHOLE_DOC)
 
     return WHOLE_DOC, input_tokens
